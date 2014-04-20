@@ -60,6 +60,10 @@ class Relation
     run_execute.length
   end
   
+  def to_a
+    run_execute
+  end
+  
   def inspect
     run_execute
   end

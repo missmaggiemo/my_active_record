@@ -74,5 +74,20 @@ describe 'Searchable' do
     expect(human.house_id).to eq(1)
   end
   
+  it '#where called works with .to_a' do
+    humans = Human.where(fname: 'Matt', house_id: 1).to_a
+
+    expect(humans.is_a?(Array)).to be_true
+  end
+  
+  it '#where chained works with .to_a' do
+    humans = Human.where(fname: 'Matt').where(house_id: 1)
+    expect(humans.to_a.is_a?(Array)).to be_true
+
+    human = humans[0]
+    expect(human.fname).to eq('Matt')
+    expect(human.house_id).to eq(1)
+  end
+  
   
 end
